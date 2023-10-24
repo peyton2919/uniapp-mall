@@ -3,15 +3,121 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"app-plus": {
+					"scrollIndicator": "none", //滚动条
+					"bounce": "none",	//回弹
+					"titleNView": {
+						"searchInput": {
+							"align": "left",
+							"backgroundColor": "#f7f7f7",
+							"borderRadius": "4px",
+							"disabled": true,
+							"placeholder": "智能积木越野四驱车",
+							"placeholderColor": "#cccccc"
+						},
+						"buttons": [
+							{
+								"color": "#989898",
+								"colorPressed": "#fd8601",
+								"float": "left",
+								"fontSize": "22px",
+								"fontSrc": "/static/font/iconfont.ttf",
+								"text": "\ue67a"
+							},
+							{
+								"color": "#989898",
+								"colorPressed": "#fd8601",
+								"float": "right",
+								"fontSize": "22px",
+								"fontSrc": "/static/font/iconfont.ttf",
+								"text": "\ue661"
+							}
+						]
+					}
+				}
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/class/class", //分类页面
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/cart/cart", //购物车页面
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/mine/mine", //我的页面
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/message/message", //消息页面
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarTitleText": "mall 商城",
+		"navigationBarBackgroundColor": "#ffffff",
+		"backgroundColor": "#ffffff"
+	},
+	// 底部导航栏
+	"tabBar": {
+		"color": "#b1b1b1",
+		"selectedColor": "#fd6801",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabbar/home.png",
+				"selectedIconPath": "static/tabbar/home-select.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/class/class",
+				"iconPath": "static/tabbar/class.png",
+				"selectedIconPath": "static/tabbar/class-select.png",
+				"text": "分类"
+			},
+			{
+				"pagePath": "pages/message/message",
+				"iconPath": "static/tabbar/message.png",
+				"selectedIconPath": "static/tabbar/message-select.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/cart/cart",
+				"iconPath": "static/tabbar/cart.png",
+				"selectedIconPath": "static/tabbar/cart-select.png",
+				"text": "购物车"
+			},
+			{
+				"pagePath": "pages/mine/mine",
+				"iconPath": "static/tabbar/mine.png",
+				"selectedIconPath": "static/tabbar/mine-select.png",
+				"text": "我的"
+			}
+		]
 	},
 	"uniIdRouter": {}
 }

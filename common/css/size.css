@@ -1,0 +1,8 @@
+/* 图片、按钮尺寸样式  屏幕宽度:750upx */
+.img-80 {
+	width: 80upx;
+	height: 80upx;
+}
+.img-h-350{
+	height: 350upx;
+}

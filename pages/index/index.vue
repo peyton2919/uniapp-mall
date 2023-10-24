@@ -1,9 +1,17 @@
 <template>
-	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+	<view>
+	
+			<!-- 轮播图组件  circular 是否循环 -->
+			<swiper indicator-dots autoplay :interval="3000" :duration="1000" circular>
+				<block v-for="(item,index) in swipers" :key="index">
+					<swiper-item>
+						<view class="swiper-item">
+							<image :src="item.src" lazy-load 
+								class="img-h-350"></image>
+						</view>
+					</swiper-item>
+				</block>
+			</swiper>
 	</view>
 </template>
 
@@ -11,7 +19,11 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				swipers:[
+					{src:'/static/images/demo/demo4.png'},
+					{src:'/static/images/demo/demo1.jpg'},
+					{src:'/static/images/demo/demo2.jpg'}
+				]
 			}
 		},
 		onLoad() {
