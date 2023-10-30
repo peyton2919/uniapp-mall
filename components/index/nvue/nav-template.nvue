@@ -1,0 +1,39 @@
+<template>
+	<!-- 图标分类
+		屏宽 750px 内边距 20px
+		每个图标分类: 142px * 5 = 710px
+		图标: 58px * 58px
+	-->
+	<div class="row w-100 px-2 mb-3">
+		<div class="j-center a-center mt-3 index-nav"
+			v-for="(item,index) in arr" :key="index">
+			<image :src="item.src" class="index-nav-img"></image>
+			<text class="font text-muted mt-1">{{item.text}}</text>
+		</div>
+	</div>
+</template>
+
+<script>
+	/**
+	 * 产品分类模板
+	 * @description 产品分类模板 
+	 * @property {Array} arr 产品分类集合
+	 */
+	export default {
+		props:{
+			arr: {
+				type:Array
+			}
+		}
+	}
+</script>
+
+<style src="@/common/css/mall-nvue.css"></style>
+<style scoped>
+	.index-nav {
+		width: 142;
+	}
+	.index-nav-img {
+		width: 58px; height: 58px;
+	}
+</style>

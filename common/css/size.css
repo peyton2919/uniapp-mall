@@ -1,7 +1,14 @@
-/* 图片、按钮尺寸样式  屏幕宽度:750upx */
+/* 图片、按钮尺寸样式  屏幕宽度:750upx 
+	表示样式: 宽度 * 高度
+	横幅广告图片 : 750 * 350
+*/
 .img-80 {
 	width: 80upx;
 	height: 80upx;
+}
+.img-60{
+	width: 60upx;
+	height: 60upx;
 }
 .img-h-350{
 	height: 350upx;

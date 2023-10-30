@@ -1,0 +1,70 @@
+<template>
+	<div class="col-6 product-list-div" @click="openDetail">
+		<image :src="item.cover" class="product-list-div-img" ></image>
+		<text class="font-md text-dark px-2 py-1 product-list-div-text">
+			{{item.title}}
+		</text>
+		<text class="px-2 font text-light-muted product-list-div-text">
+			{{item.explain}}
+		</text>
+		<div class="px-2 py-1 row a-end">
+			<price-template :price="item.pprice"></price-template>
+			
+			<text class="line-through text-light-muted ml-2">
+				￥{{item.oprice | priceFormat}}
+			</text>
+		</div>
+	</div>
+</template>
+
+<script>
+	import priceTemplate from "@/components/common/nvue/price-template.nvue";
+	
+	/**
+	 * 商品列表模板
+	 * @description 商品列表 {common-list}
+	 * @property {Object} item 商品对象
+	 * @property {Number} index 索引
+	 */
+	export default {
+		components:{
+			priceTemplate
+		},
+		props:{
+			item: {
+				type: Object,
+				required: true
+			},
+			index: {
+				type: Number,
+				default: 0
+			}
+		},
+		filters:{
+			priceFormat(value){
+				return parseFloat(value).toFixed(2);
+			}
+		},
+		methods:{
+			openDetail(){
+				uni.navigateTo({
+					url: '/pages/detail/detail'
+				});
+			}
+		}
+	}
+</script>
+
+<style src="@/common/css/mall-nvue.css"></style>
+<style scoped>
+	.product-list-div {
+		padding-left: 2.5px; padding-right: 2.5px;
+	}
+	.product-list-div-img {
+		width: 370px; height: 370px;
+	}
+	.product-list-div-text {
+		lines: 1;
+	}
+
+</style>

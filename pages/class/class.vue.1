@@ -1,0 +1,173 @@
+<template>
+	<!-- 2. 分类页面 -->
+	<view class="d-flex border-top border-light-secondary" style="height: 100%; box-sizing: border-box;">
+		
+		<loading :show="showLoading"/>
+		<!-- 左边 -->
+		<scroll-view id="leftScroll" scroll-y style="flex: 1;height: 100%;" 
+			class="border-right  border-light-secondary"
+			:scroll-top="leftScrollTop">
+			<view class="border-bottom border-light-secondary py-1 left-scroll-item"
+				hover-class="bg-light-secondary"
+				v-for="(item,index) in cates" :key="index"
+				@tap="changeCate(index)">
+				<view class="py-1 font-md text-muted text-center"
+					:class="activeIndex === index ? 'class-active':''">
+					{{item.name}}
+				</view>
+			</view>
+		</scroll-view>
+		
+		<!-- 右边 -->
+		<scroll-view scroll-y style="flex: 3.5;height: 100%;" 
+			:scroll-top="rightScrollTop"
+			:scroll-with-animation="true"
+			@scroll="onRightScroll">
+			
+			<view class="row right-scroll-item" v-for="(item,index) in list" :key="index">
+				<view class="span24-8 text-center py-2" 
+					v-for="(item2,index2) in item.list" :key="index2">
+					<image :src="item2.src" style="width: 120rpx; height: 120rpx;"></image>
+					<tex class="d-block">{{item2.name}}</tex>
+				</view>
+			</view>
+		</scroll-view>
+		
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				showLoading:true,
+				// 当前选中的分类
+				activeIndex: 0,
+				cates: [],
+				list: [],
+				// 左边 每个 item top 值 的集合 
+				leftDomsTop:[],
+				// 右边 每个 item top 值 的集合 
+				rightDomsTop:[],
+				// 右边 scroll top 高度
+				rightScrollTop: 0,
+				// 左边 scroll top 高度
+				leftScrollTop: 0,
+				// 记录左边每个 item 高度
+				cateItemHeight: 0
+			}
+		},
+		watch:{
+			async activeIndex(newV,oldV){
+				// 获取 scroll-view 高度, scrollTop 高度 
+				let data = await this.getELInfo({
+					size: true,
+					scrollOffset: true
+				})
+				
+				let H = data.height
+				let ST = data.scrollTop
+				// 处于下边
+				if((this.leftDomsTop[newV]+this.cateItemHeight) > (H  + ST)){
+					return this.leftScrollTop = (this.leftDomsTop[newV]+this.cateItemHeight) -H
+				}
+				
+				// 处于上边
+				if(ST > this.cateItemHeight){
+					this.leftScrollTop = this.leftDomsTop[newV]
+				}
+			}
+		},
+		onLoad() {
+			setTimeout(()=>{
+				this.getData()
+			},1500)
+			
+		},
+		onReady() {
+			this.getELInfo({
+				all:'left',
+				rect: true,
+				size: true				
+			}).then(data=>{
+				this.leftDomsTop = data.map(v=> {
+					this.cateItemHeight = v.height
+					return v.top
+				})
+			})
+			this.getELInfo({
+				all:'right',
+				rect: true,
+				size: false
+			}).then(data=>{
+				this.rightDomsTop = data.map(v=> v.top)
+			})
+		},
+		methods: {
+			// 获取节点信息
+			getELInfo(obj = {}){
+				return new Promise((res,rej)=>{
+					let option = {
+						size: obj.size ? true : false,
+						rect: obj.rect ? true : false,
+						scrollOffset: obj.scrollOffset ? true : false
+					}
+					// 获取左右每个元素 top 高度
+					const query = uni.createSelectorQuery().in(this);
+					let Q = obj.all ? query.selectAll(`.${obj.all}-scroll-item`)
+									: query.select('#leftScroll');
+					Q.fields(option,data=>{
+						res(data)
+					}).exec();
+				})
+			},
+			
+			// 数据
+			getData(){
+				for (var i = 0; i < 20; i++) {
+					this.cates.push({
+						name:"分类 " + i
+					})
+					this.list.push({
+						list:[]
+					})
+				}
+
+				for (var i = 0; i < this.list.length; i++) {
+					for (var j = 0; j < 24; j++) {
+
+						this.list[i].list.push({
+							name:`分类${i}-商品`,
+							src: '/static/images/demo/cate_03.png'
+						})
+					}
+				}
+				this.$nextTick(()=>{
+					this.showLoading = false
+				})
+			},
+			// 点击左边分类
+			changeCate(index){
+				this.activeIndex = index
+				// 右边 scroll-view 滚动到对应区块
+				this.rightScrollTop = this.rightDomsTop[index]
+			},
+			// 监听右边滚动事件
+			async onRightScroll(e){
+				// 匹配当前 scrollTop 所在的索引
+				this.rightDomsTop.forEach((v,k)=>{
+					if(v < e.detail.scrollTop){
+						this.activeIndex = k
+						return false
+					}
+				})
+			}
+		}
+	}
+</script>
+
+<style scoped>
+	.class-active {
+		border-left: 8rpx solid #fd6801;color: #fd6801!important;
+	}
+</style>

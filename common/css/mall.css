@@ -1,11 +1,12 @@
 /* 防止图片闪一下 */
 image{will-change: transform}
 /* scroll-view */
+/* 横向 scroll 要配置这二个 */
 .scroll-row{ width: 100%;white-space: nowrap;line-height: 44px; }
 .scroll-row-item{ display: inline-block!important; }
-
+/* 蓝色、藏青色、绿色、深红色、黄色 、青色、白色、黑色、灰色、白色*/
 body{
-	--primary:#007bff;
+	--primary:#007bff;  
 	--secondary: #6c757d;
 	--success: #28a745;
 	--danger: #dc3545;
@@ -21,17 +22,20 @@ body{
 
 /* 阴影 */
 .shadow-sm {
-    box-shadow: 0 2upx 4upx rgba(114, 130, 138, 0.2)!important;
+    box-shadow: 0 2rpx 4rpx rgba(114, 130, 138, 0.2)!important;
 }
 .shadow {
-    box-shadow: 0 8upx 16upx rgba(114, 130, 138, 0.2)!important;
+    box-shadow: 0 8rpx 16rpx rgba(114, 130, 138, 0.2)!important;
 }
 .shadow-lg {
-    box-shadow: 0 16upx 48upx rgba(114, 130, 138, 0.2)!important;
+    box-shadow: 0 16rpx 48rpx rgba(114, 130, 138, 0.2)!important;
 }
 /* 定位 */
+/* 定位: 绝对定位{需要配合 top bottom left right 属性才能看到效果} */
 .position-absolute{ position: absolute; }
+/* 定位: 固定位置,即使窗口是滚动的它也不会移动 */
 .position-fixed{ position: fixed; }
+/* 定位: 相对定位 {需要配合 top bottom left right 4个偏移属性进行定位} */
 .position-relative{ position: relative; }
 .left-0{ left: 0; }
 .top-0{ top: 0; }
@@ -41,16 +45,16 @@ body{
 /* 宽高 */
 .w-100{ width: 100%;}
 .w-50{ width: 50%;}
-.h-100{ height: 1250upx;}
-.h-50{ width: 625upx; }
+.h-100{ height: 1250rpx;}
+.h-50{ width: 625rpx; }
 
 /* 字体 */
-.font{ font-size: 25upx; }
-.font-sm{ font-size: 22upx; }
-.font-md{ font-size: 30upx; }
-.font-lg{ font-size: 40upx; }
-.font-big{ font-size: 60upx; }
-.font-huge{font-size: 80upx;}
+.font{ font-size: 25rpx; }
+.font-sm{ font-size: 22rpx; }
+.font-md{ font-size: 30rpx; }
+.font-lg{ font-size: 40rpx; }
+.font-big{ font-size: 60rpx; }
+.font-huge{ font-size: 80rpx; }
 .font-weight{ font-weight: bold!important; }
 .font-weight-100{ font-weight: 100!important; }
 
@@ -61,7 +65,14 @@ body{
 .line-h-lg{ line-height: 2!important; }
 .line-h-big{ line-height: 3!important; }
 
+/* 为文字增加删除线  */
 .line-through{ text-decoration: line-through; }
+/* 去掉文字的装饰，经常用来去掉a标签下划线  */
+.line-none{ text-decoration: none; }
+/* 为文字增加上划线  */
+.line-overline{ text-decoration: overline; }
+/* 为文字增加下划线  */
+.line-underline{ text-decoration: underline; }
 
 .text-center{ text-align: center; }
 .text-left{ text-align: left; }
@@ -71,18 +82,18 @@ body{
 [class*='col-'],[class*='span-'],[class*='span24-'] { min-height: 1px;box-sizing: border-box!important;}
 
 /* 栅栏一 */
-.col-1{ width: 62.5upx; } 
-.col-2{ width: 125upx; } 
-.col-3{ width: 187.5upx; } 
-.col-4{ width: 250upx;} 
-.col-5{ width: 312.5upx; } 
-.col-6{ width: 375upx; }
-.col-7{ width: 437.5upx; }
-.col-8{ width: 500upx; }
-.col-9{ width: 562.5upx; }
-.col-10{ width: 625upx; }
-.col-11{ width: 687.5upx; }
-.col-12{ width: 750upx; }
+.col-1{ width: 62.5rpx; } 
+.col-2{ width: 125rpx; } 
+.col-3{ width: 187.5rpx; } 
+.col-4{ width: 250rpx;} 
+.col-5{ width: 312.5rpx; } 
+.col-6{ width: 375rpx; }
+.col-7{ width: 437.5rpx; }
+.col-8{ width: 500rpx; }
+.col-9{ width: 562.5rpx; }
+.col-10{ width: 625rpx; }
+.col-11{ width: 687.5rpx; }
+.col-12{ width: 750rpx; }
 
 /* 栅栏二 */
 .span-1{ width: 5%; } 
@@ -133,36 +144,55 @@ body{
 .span24-24{ width: 100%; }
 
 /* flex布局 */
+/* flex布局: 行 水平显示 */
 .d-flex{ display: flex;flex-direction: row!important; }
 .d-block{ display: block; }
 .d-inline-block{ display: inline-block; }
 
 .flex-1{ flex: 1; }
+/* flex布局: 列 垂直显示 */
 .flex-column{ flex-direction: column!important; }
+/* flex布局: 行 水平显示 */
 .flex-row{ flex-direction: row; }
+/* 会在需要时换行 */
 .flex-wrap{ flex-wrap: wrap; }
+/* 默认值。不会换行。 */
 .flex-nowrap{ flex-wrap: nowrap; }
+/* 不被挤压 {相对于其余弹性项目的收缩量} */
 .flex-shrink{flex-shrink: 0;}
+/* 对齐方式: 从行首开始排列 */
 .j-start{ justify-content: flex-start; }
+/* 对齐方式: 水平方向居中 */
 .j-center{ justify-content: center!important; }
+/* 对齐方式: 从行尾开始排列 */
 .j-end{ justify-content: flex-end; }
+/* 对齐方式: 首个元素放置于起点，末尾元素放置于终点  */
 .j-sb{ justify-content: space-between; }
+/* 对齐方式: 垂直方向居中 */
 .a-center{ align-items:center!important; }
+/* 对齐方式: 元素位于容器的开头 */
 .a-start{ align-items: flex-start; }
+/* 对齐方式: 元素位于容器的结尾 */
 .a-end{ align-items:flex-end; }
+/* 对齐方式: 元素被拉伸以适应容器 */
 .a-stretch{ align-items: stretch; }
+/* 对齐方式: 元素位于容器的开头 */
 .a-self-start{ align-self: flex-start; }
+/* 对齐方式: 元素继承了它的父容器的 align-items 属性 */
 .a-self-auto{ align-self: auto; }
+/* 对齐方式: 元素位于容器的结尾 */
 .a-self-end{ align-self: flex-end; }
+/* 对齐方式: 元素被拉伸以适应容器 */
 .a-self-stretch{ align-self:stretch; }
+/* 对齐方式: 元素位于容器的基线上 */
 .a-self-baseline{ align-self:baseline; }
 
 /* Border */
-.border{  border-width: 1upx; border-style: solid; border-color: var(--borderColor);}
-.border-top{ border-top-width: 1upx; border-top-style: solid; border-top-color: var(--borderColor); }
-.border-right{ border-right-width: 1upx; border-right-style: solid; border-right-color: var(--borderColor);}
-.border-bottom{ border-bottom-width: 1upx;border-bottom-style: solid;border-bottom-color:var(--borderColor);}
-.border-left{ border-left-width: 1upx;border-left-style: solid;border-left-color:var(--borderColor);}
+.border{  border-width: 1rpx; border-style: solid; border-color: var(--borderColor);}
+.border-top{ border-top-width: 1rpx; border-top-style: solid; border-top-color: var(--borderColor); }
+.border-right{ border-right-width: 1rpx; border-right-style: solid; border-right-color: var(--borderColor);}
+.border-bottom{ border-bottom-width: 1rpx;border-bottom-style: solid;border-bottom-color:var(--borderColor);}
+.border-left{ border-left-width: 1rpx;border-left-style: solid;border-left-color:var(--borderColor);}
 
 .border-0{ border-width: 0; }
 .border-top-0{ border-top-width: 0; }
@@ -179,10 +209,14 @@ body{
 .border-light{ border-color: var(--light)!important }
 .border-dark{ border-color: var(--dark)!important }
 .border-white{ border-color: var(--white)!important }
+/* 边框 淡灰色  */
 .border-light-secondary{border-color: #F1F1F1!important;}
 
-.rounded{ border-radius: 5upx; }
+/* 圆角 5rpx */
+.rounded{ border-radius: 5rpx; }
+/* 圆角 100% {圆形} */
 .rounded-circle{ border-radius:100%; }
+/* 圆角 0 */
 .rounded-0{ border-radius:0; }
 
 /* color */
@@ -194,10 +228,13 @@ body{
 .text-info{ color: var(--info)!important; }
 .text-light{ color: var(--light)!important; }
 .text-dark{ color: var(--dark)!important; }
+/** 文字为 灰色  */
 .text-muted{ color: var(--muted)!important; }
+/* 文字为 淡灰色 */
 .text-light-muted{ color: var(--lightmuted)!important; }
 .text-white{ color: var(--white)!important; }
 
+/* 文字为 淡灰色 */
 .bg-primary{ background-color:var(--primary)!important; }
 .bg-secondary{ background-color:var(--secondary)!important; }
 .bg-success{ background-color:var(--success)!important; }
@@ -211,116 +248,116 @@ body{
 
 /* Spacing */
 .m-0 { margin-left: 0;margin-right: 0;margin-top: 0;margin-bottom: 0;}
-.m { margin-left: 5upx;margin-right: 5upx;margin-top: 5upx;margin-bottom: 5upx;}
-.m-1 { margin-left: 10upx;margin-right: 10upx;margin-top: 10upx;margin-bottom: 10upx;}
-.m-2 { margin-left: 20upx;margin-right: 20upx;margin-top: 20upx;margin-bottom: 20upx;}
-.m-3 { margin-left: 30upx;margin-right: 30upx;margin-top: 30upx;margin-bottom: 30upx;}
-.m-4 { margin-left: 40upx;margin-right: 40upx;margin-top: 40upx;margin-bottom: 40upx;}
-.m-5 { margin-left: 50upx;margin-right: 50upx;margin-top: 50upx;margin-bottom: 50upx;}
+.m { margin-left: 5rpx;margin-right: 5rpx;margin-top: 5rpx;margin-bottom: 5rpx;}
+.m-1 { margin-left: 10rpx;margin-right: 10rpx;margin-top: 10rpx;margin-bottom: 10rpx;}
+.m-2 { margin-left: 20rpx;margin-right: 20rpx;margin-top: 20rpx;margin-bottom: 20rpx;}
+.m-3 { margin-left: 30rpx;margin-right: 30rpx;margin-top: 30rpx;margin-bottom: 30rpx;}
+.m-4 { margin-left: 40rpx;margin-right: 40rpx;margin-top: 40rpx;margin-bottom: 40rpx;}
+.m-5 { margin-left: 50rpx;margin-right: 50rpx;margin-top: 50rpx;margin-bottom: 50rpx;}
 
 .mx-0 { margin-left: 0;margin-right: 0;}
-.mx { margin-left: 5upx;margin-right: 5upx;}
-.mx-1 { margin-left: 10upx;margin-right: 10upx;}
-.mx-2 { margin-left: 20upx;margin-right: 20upx;}
-.mx-3 { margin-left: 30upx;margin-right: 30upx;}
-.mx-4 { margin-left: 40upx;margin-right: 40upx;}
-.mx-5 { margin-left: 50upx;margin-right: 50upx;}
+.mx { margin-left: 5rpx;margin-right: 5rpx;}
+.mx-1 { margin-left: 10rpx;margin-right: 10rpx;}
+.mx-2 { margin-left: 20rpx;margin-right: 20rpx;}
+.mx-3 { margin-left: 30rpx;margin-right: 30rpx;}
+.mx-4 { margin-left: 40rpx;margin-right: 40rpx;}
+.mx-5 { margin-left: 50rpx;margin-right: 50rpx;}
 
 .my-0 { margin-top: 0;margin-bottom: 0;}
-.my { margin-top: 5upx;margin-bottom: 5upx;}
-.my-1 { margin-top: 10upx;margin-bottom: 10upx;}
-.my-2 { margin-top: 20upx;margin-bottom: 20upx;}
-.my-3 { margin-top: 30upx;margin-bottom: 30upx;}
-.my-4 { margin-top: 40upx;margin-bottom: 40upx;}
-.my-5 { margin-top: 50upx;margin-bottom: 50upx;}
+.my { margin-top: 5rpx;margin-bottom: 5rpx;}
+.my-1 { margin-top: 10rpx;margin-bottom: 10rpx;}
+.my-2 { margin-top: 20rpx;margin-bottom: 20rpx;}
+.my-3 { margin-top: 30rpx;margin-bottom: 30rpx;}
+.my-4 { margin-top: 40rpx;margin-bottom: 40rpx;}
+.my-5 { margin-top: 50rpx;margin-bottom: 50rpx;}
 
 .mt-0 { margin-top: 0;}
-.mt { margin-top: 5upx;}
+.mt { margin-top: 5rpx;}
 .mt-auto { margin-top: auto;}
-.mt-1 { margin-top: 10upx;}
-.mt-2 { margin-top: 20upx;}
-.mt-3 { margin-top: 30upx;}
-.mt-4 { margin-top: 40upx;}
-.mt-5 { margin-top: 50upx;}
+.mt-1 { margin-top: 10rpx;}
+.mt-2 { margin-top: 20rpx;}
+.mt-3 { margin-top: 30rpx;}
+.mt-4 { margin-top: 40rpx;}
+.mt-5 { margin-top: 50rpx;}
 
 .mb-0 { margin-bottom: 0;}
-.mb { margin-bottom: 5upx;}
+.mb { margin-bottom: 5rpx;}
 .mb-auto { margin-bottom: auto;}
-.mb-1 { margin-bottom: 10upx;}
-.mb-2 { margin-bottom: 20upx;}
-.mb-3 { margin-bottom: 30upx;}
-.mb-4 { margin-bottom: 40upx;}
-.mb-5 { margin-bottom: 50upx;}
+.mb-1 { margin-bottom: 10rpx;}
+.mb-2 { margin-bottom: 20rpx;}
+.mb-3 { margin-bottom: 30rpx;}
+.mb-4 { margin-bottom: 40rpx;}
+.mb-5 { margin-bottom: 50rpx;}
 
 .ml-0 { margin-left: 0;}
-.ml { margin-left: 5upx;}
+.ml { margin-left: 5rpx;}
 .ml-auto { margin-left: auto;}
-.ml-1 { margin-left: 10upx;}
-.ml-2 { margin-left: 20upx;}
-.ml-3 { margin-left: 30upx;}
-.ml-4 { margin-left: 40upx;}
-.ml-5 { margin-left: 50upx;}
+.ml-1 { margin-left: 10rpx;}
+.ml-2 { margin-left: 20rpx;}
+.ml-3 { margin-left: 30rpx;}
+.ml-4 { margin-left: 40rpx;}
+.ml-5 { margin-left: 50rpx;}
 
 .mr-0 { margin-right: 0;}
-.mr { margin-right: 5upx;}
-.mr-1 { margin-right: 10upx;}
-.mr-2 { margin-right: 20upx;}
-.mr-3 { margin-right: 30upx;}
-.mr-4 { margin-right: 40upx;}
-.mr-5 { margin-right: 50upx;}
+.mr { margin-right: 5rpx;}
+.mr-1 { margin-right: 10rpx;}
+.mr-2 { margin-right: 20rpx;}
+.mr-3 { margin-right: 30rpx;}
+.mr-4 { margin-right: 40rpx;}
+.mr-5 { margin-right: 50rpx;}
 
 .p-0 {padding-left: 0;padding-right: 0;padding-top: 0;padding-bottom: 0;}
-.p {padding-left: 5upx;padding-right: 5upx;padding-top: 5upx;padding-bottom:5upx;}
-.p-1 {padding-left: 10upx;padding-right: 10upx;padding-top: 10upx;padding-bottom: 10upx;}
-.p-2 {padding-left: 20upx;padding-right: 20upx;padding-top: 20upx;padding-bottom: 20upx;}
-.p-3 {padding-left: 30upx;padding-right: 30upx;padding-top: 30upx;padding-bottom: 30upx;}
-.p-4 {padding-left: 40upx;padding-right: 40upx;padding-top: 40upx;padding-bottom: 40upx;}
-.p-5 {padding-left: 50upx;padding-right: 50upx;padding-top: 50upx;padding-bottom: 50upx;}
+.p {padding-left: 5rpx;padding-right: 5rpx;padding-top: 5rpx;padding-bottom:5rpx;}
+.p-1 {padding-left: 10rpx;padding-right: 10rpx;padding-top: 10rpx;padding-bottom: 10rpx;}
+.p-2 {padding-left: 20rpx;padding-right: 20rpx;padding-top: 20rpx;padding-bottom: 20rpx;}
+.p-3 {padding-left: 30rpx;padding-right: 30rpx;padding-top: 30rpx;padding-bottom: 30rpx;}
+.p-4 {padding-left: 40rpx;padding-right: 40rpx;padding-top: 40rpx;padding-bottom: 40rpx;}
+.p-5 {padding-left: 50rpx;padding-right: 50rpx;padding-top: 50rpx;padding-bottom: 50rpx;}
 
 .px-0 { padding-left: 0;padding-right: 0;}
-.px { padding-left: 5upx;padding-right: 5upx;}
-.px-1 { padding-left: 10upx;padding-right: 10upx;}
-.px-2 { padding-left: 20upx;padding-right: 20upx;}
-.px-3 { padding-left: 30upx;padding-right: 30upx;}
-.px-4 { padding-left: 40upx;padding-right: 40upx;}
-.px-5 { padding-left: 50upx;padding-right: 50upx;}
+.px { padding-left: 5rpx;padding-right: 5rpx;}
+.px-1 { padding-left: 10rpx;padding-right: 10rpx;}
+.px-2 { padding-left: 20rpx;padding-right: 20rpx;}
+.px-3 { padding-left: 30rpx;padding-right: 30rpx;}
+.px-4 { padding-left: 40rpx;padding-right: 40rpx;}
+.px-5 { padding-left: 50rpx;padding-right: 50rpx;}
 
 .py-0 { padding-top: 0;padding-bottom: 0;}
-.py { padding-top: 5upx;padding-bottom: 5upx;}
-.py-1 { padding-top: 10upx;padding-bottom: 10upx;}
-.py-2 { padding-top: 20upx;padding-bottom: 20upx;}
-.py-3 { padding-top: 30upx;padding-bottom: 30upx;}
-.py-4 { padding-top: 40upx;padding-bottom: 40upx;}
-.py-5 { padding-top: 50upx;padding-bottom: 50upx;}
+.py { padding-top: 5rpx;padding-bottom: 5rpx;}
+.py-1 { padding-top: 10rpx;padding-bottom: 10rpx;}
+.py-2 { padding-top: 20rpx;padding-bottom: 20rpx;}
+.py-3 { padding-top: 30rpx;padding-bottom: 30rpx;}
+.py-4 { padding-top: 40rpx;padding-bottom: 40rpx;}
+.py-5 { padding-top: 50rpx;padding-bottom: 50rpx;}
 
 .pt-0 { padding-top: 0;}
-.pt { padding-top: 5upx;}
-.pt-1 { padding-top: 10upx;}
-.pt-2 { padding-top: 20upx;}
-.pt-3 { padding-top: 30upx;}
-.pt-4 { padding-top: 40upx;}
-.pt-5 { padding-top: 50upx;}
+.pt { padding-top: 5rpx;}
+.pt-1 { padding-top: 10rpx;}
+.pt-2 { padding-top: 20rpx;}
+.pt-3 { padding-top: 30rpx;}
+.pt-4 { padding-top: 40rpx;}
+.pt-5 { padding-top: 50rpx;}
 
 .pb-0 { padding-bottom: 0;}
-.pb { padding-bottom: 5upx;}
-.pb-1 { padding-bottom: 10upx;}
-.pb-2 { padding-bottom: 20upx;}
-.pb-3 { padding-bottom: 30upx;}
-.pb-4 { padding-bottom: 40upx;}
-.pb-5 { padding-bottom: 50upx;}
+.pb { padding-bottom: 5rpx;}
+.pb-1 { padding-bottom: 10rpx;}
+.pb-2 { padding-bottom: 20rpx;}
+.pb-3 { padding-bottom: 30rpx;}
+.pb-4 { padding-bottom: 40rpx;}
+.pb-5 { padding-bottom: 50rpx;}
 
 .pl-0 { padding-left: 0;}
-.pl { padding-left: 5upx;}
-.pl-1 { padding-left: 10upx;}
-.pl-2 { padding-left: 20upx;}
-.pl-3 { padding-left: 30upx;}
-.pl-4 { padding-left: 40upx;}
-.pl-5 { padding-left: 50upx;}
+.pl { padding-left: 5rpx;}
+.pl-1 { padding-left: 10rpx;}
+.pl-2 { padding-left: 20rpx;}
+.pl-3 { padding-left: 30rpx;}
+.pl-4 { padding-left: 40rpx;}
+.pl-5 { padding-left: 50rpx;}
 
 .pr-0 { padding-right: 0;}
-.pr { padding-right: 5upx;}
-.pr-1 { padding-right: 10upx;}
-.pr-2 { padding-right: 20upx;}
-.pr-3 { padding-right: 30upx;}
-.pr-4 { padding-right: 40upx;}
-.pr-5 { padding-right: 50upx;}
+.pr { padding-right: 5rpx;}
+.pr-1 { padding-right: 10rpx;}
+.pr-2 { padding-right: 20rpx;}
+.pr-3 { padding-right: 30rpx;}
+.pr-4 { padding-right: 40rpx;}
+.pr-5 { padding-right: 50rpx;}

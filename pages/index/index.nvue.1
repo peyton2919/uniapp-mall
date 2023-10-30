@@ -1,0 +1,143 @@
+<template>
+	<div>
+		<list :show-scrollbar="false">
+			<cell>
+				<!-- 轮播图 -->
+				<slider-template :arr="swipers"/>
+				
+				<!-- 图标分类 -->
+				<nav-template :arr="navs"/>
+				<divider-template/>				
+				
+				<!-- 三图广告 -->
+				<three-advert-template :obj="threeAdvert"/>
+				<divider-nvue-template/>
+				
+				<!-- 大图广告 -->
+				<one-advert-template :obj="oneAdvert"/>
+				
+				<!-- 公共列表 -->
+				<div class="row w-100">
+					<block v-for="(item,index) in list" :key="index">
+						<product-list-template :item="item" :index="index"></product-list-template>
+					</block>
+				</div>
+			</cell>
+		</list>
+		
+		
+	</div>
+</template>
+
+<script>
+	import sliderTemplate from "@/components/index/nvue/slider-template.nvue";
+	import navTemplate from "@/components/index/nvue/nav-template.nvue";
+	import dividerTemplate from "@/components/common/nvue/divider-template.nvue";
+	import threeAdvertTemplate from "@/components/index/nvue/three-advert-template.nvue";
+	import oneAdvertTemplate from "@/components/index/nvue/one-advert-template.nvue";
+	import productListTemplate from "@/components/common/nvue/product-list-template.nvue";
+	
+	// 获取当前窗口对象
+	const currentWebview = plus.webview.currentWebview();
+	
+	export default {
+		components:{
+			sliderTemplate,navTemplate,dividerTemplate,threeAdvertTemplate,
+			oneAdvertTemplate,productListTemplate
+		},
+		data(){
+			return {
+				swipers: [
+					{src:"/static/images/demo/demo8.jpg"},
+					{src:"/static/images/demo/demo9.jpg"},
+					{src:"/static/images/demo/demo10.jpg"}
+				],
+				navs:[
+					{src:'/static/images/nav/1.png',text:'新品发布'},
+					{src:'/static/images/nav/2.gif',text:'小米众筹'},
+					{src:'/static/images/nav/3.gif',text:'以旧换新'},
+					{src:'/static/images/nav/4.gif',text:'一分换团'},
+					{src:'/static/images/nav/5.gif',text:'超值特卖'},
+					{src:'/static/images/nav/6.gif',text:'小米秒杀'},
+					{src:'/static/images/nav/7.gif',text:'真心想要'},
+					{src:'/static/images/nav/8.gif',text:'电视热卖'},
+					{src:'/static/images/nav/9.gif',text:'家电热卖'},
+					{src:'/static/images/nav/10.gif',text:'米粉卡'}
+				],
+				threeAdvert: {
+					big:{
+						src:"/static/images/demo/demo1.jpg"
+					},
+					smalltop:{
+						src:"/static/images/demo/demo2.jpg"
+					},
+					smallbottom:{
+						src:"/static/images/demo/demo3.jpg"
+					}
+				},
+				oneAdvert: {
+					cover: "/static/images/demo/demo4.png",
+					title: "每日精选"
+				},
+				list: [
+					{
+						cover: '/static/images/demo/list/1.jpg',
+						title: '米家空调',
+						explain: '1.5匹变频',
+						oprice: 2699.00,
+						pprice: 1366.00
+					},{
+						cover: '/static/images/demo/list/2.jpg',
+						title: '米家空调',
+						explain: '1.5匹变频,1.5匹变频,1.5匹变频,1.5匹变频,1.5匹变频,',
+						oprice: 2788.00,
+						pprice: 1598.00
+					},{
+						cover: '/static/images/demo/list/3.jpg',
+						title: '米家空调',
+						explain: '1.5匹变频',
+						oprice: 3299.00,
+						pprice: 2196.00
+					},{
+						cover: '/static/images/demo/list/4.jpg',
+						title: '米家空调',
+						explain: '1.5匹变频',
+						oprice: 6999.00,
+						pprice: 3999.00
+					},{
+						cover: '/static/images/demo/list/5.jpg',
+						title: '米家空调',
+						explain: '1.5匹变频',
+						oprice: 10988.00,
+						pprice: 7689.00
+					},{
+						cover: '/static/images/demo/list/6.jpg',
+						title: '米家空调',
+						explain: '1.5匹变频',
+						oprice: 9678.00,
+						pprice: 7666.00
+					}
+				]
+			}
+		},
+		created() {
+			// 监听当前窗口显示 可以弥补没有 onshow 事件
+			// 模拟 onshow 生命周期
+			currentWebview.addEventListener('show',e=>{
+				console.log('indexshow');
+			})
+		},
+		beforeDestroy() {
+			// 移除create方法中 currentWebview 监听事件
+			currentWebview.removeEventListener('show',e=>{})
+		},
+		methods:{
+			
+		}
+	}
+</script>
+
+<style src="@/common/css/mall-nvue.css"></style>
+<style>
+
+</style>

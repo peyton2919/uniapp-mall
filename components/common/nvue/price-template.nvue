@@ -1,0 +1,43 @@
+<template>
+	<div class="common-price-div" >
+		<text class="common-price-div-text">￥</text>
+		<text class="common-price-div-text1">
+			<slot>{{convert}}</slot>
+		</text>
+	</div>
+</template>
+
+<script>
+	/**
+	 * 单价模板
+	 * @property {Number,String} price 单价
+	 * @returns 返回带二位小数点
+	 */
+	export default {
+		props:{
+			price:{
+				type: [Number,String],
+				default: 0.00
+			}
+		},
+		computed:{
+			// 转换单价
+			convert(){		
+				return parseFloat(this.price).toFixed(2);
+			}
+		}
+	}
+</script>
+
+<style>
+	.common-price-div {
+		flex-direction: row;
+	}
+	.common-price-div-text {
+		color: #fd6801; font-size: 25px;
+	}
+	.common-price-div-text1 {
+		color: #fd6801; font-size: 32px;
+	}
+	
+</style>

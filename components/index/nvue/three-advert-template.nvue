@@ -1,0 +1,54 @@
+<template>
+	<!-- 三图广告
+		左边图片: 373px * 530px;
+		右边图片: 2 * (375px * 264px);
+	-->
+	<div class="index-three-advert-div">
+		<div class="index-three-advert-col-6">
+			<image :src="obj.big.src" mode="widthFix" class="index-three-advert-big"></image>
+		</div>
+		<div class="index-three-advert-col-6">
+			<image :src="obj.smalltop.src" mode="widthFix" class="index-three-advert-small index-three-advert-m2"></image>
+			<image :src="obj.smallbottom.src" mode="widthFix" class="index-three-advert-small"></image>
+		</div>
+	</div>
+</template>
+
+<script>
+	/**
+	 * 三幅广告位 (W: 750 H: 530)
+	 * 左边 W: 373 H: 530
+	 * 右边 2*(W: 375 H: 264)
+	 * @property {Object} obj 三幅广告对象
+	 * 	@value big 左边广告对象  {图片地址的写法: obj.big.src}
+	 *  @value smalltop 右边上边广告对象  {图片地址的写法: obj.smalltop.src}
+	 *  @value smallbottom 右边下边广告对象  {图片地址的写法: obj.smallbottom.src}
+	 */
+	export default {
+		props:{
+			obj: {
+				type:Object
+			}
+		}
+	}
+</script>
+
+<style scoped>
+	.index-three-advert-div {
+		width: 750px;
+		flex-direction: row; 
+		flex-wrap: wrap;
+	}
+	.index-three-advert-col-6 {
+		width: 375px;
+	}
+	.index-three-advert-big {
+		width: 373px; height: 530px;
+	}
+	.index-three-advert-small {
+		width: 375px; height: 264px;
+	}
+	.index-three-advert-m2 {
+		margin-bottom: 2px;
+	}
+</style>
