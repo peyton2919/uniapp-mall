@@ -1,6 +1,6 @@
 <template>
 	<!-- 写基础卡片组件 -->
-	<view class="card">
+	<view class="card" :style="cardStyle">
 		<!-- 标题 -->
 		<view v-if="showHead" class="px-3 main-border-color"
 			:class="getHeadClass">		
@@ -42,7 +42,8 @@
 	 * @property {Boolean} titleWeight 标题是否加粗 默认:true 加粗
 	 * 	 @value true 加粗
 	 *   @value false 不加粗   
-	 * @property {String} bodyStyle body 样式 {写成字符串格式}
+	 * @property {String} bodyStyle body 样式 {写成字符串格式,class样式}
+	 * @property {String} cardStyle 整体 样式 {写成字符串格式,class样式}
 	 */
 	export default {
 		props:{
@@ -74,6 +75,10 @@
 				default: true
 			},
 			bodyStyle: {
+				type: String,
+				default: ''
+			},
+			cardStyle: {
 				type: String,
 				default: ''
 			}

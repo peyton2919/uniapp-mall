@@ -20,8 +20,8 @@
 							<slot name="icon">
 								<uni-icons :color="extraIcon.color" :size="extraIcon.size" :type="extraIcon.type" />
 							</slot>
-							<!-- 自定义 增加 -->
-							<view v-if="leftIcon" class="iconfont" :class="leftIcon" :style="leftIconStyle"></view>
+							<!-- 自定义 增加 style="font-size: 80rpx;" -->
+							<view v-if="leftIcon" class=" iconfont " :class="leftIcon" :style="leftIconStyle"></view>
 						</view>
 					</view>
 				</slot>

@@ -2,17 +2,25 @@
 	<!-- 5. 我的页面 -->
 	<view>
 		<!-- 头部 -->
-		<view class="position-relative d-flex a-center" style="height: 320rpx">
-			<view class="iconfont icon-xiaoxi position-absolute text-white" style="font-size: 50rpx; top: 75rpx; right: 20rpx; z-index: 100"></view>
+		<view class="position-relative d-flex a-center animated fadeIn faster" style="height: 320rpx">
+			
+			<loading-plus v-if="beforeReady"></loading-plus>
+			<!-- 消息列表 -->
+			
+			<view class="iconfont icon-xiaoxi position-absolute text-white" 
+				style="font-size: 50rpx; top: 75rpx; right: 20rpx; z-index: 100"
+				@click="navigate('msg-list')"></view>
+		
 			<image src="/static/images/bg.jpg" style="height: 320rpx; width: 100%"></image>
 
 			<view class="d-flex a-center position-absolute left-0 right-0" style="bottom: 50rpx">
-				<image src="../../static/images/demo/demo6.jpg" style="height: 145rpx; width: 145rpx; border: 5rpx solid" class="rounded-circle border-light ml-4"></image>
-				<view class="ml-2 text-white font-md">测试昵称</view>
-				<view
-					class="d-flex a-center j-center a-self-end ml-auto px-2"
-					style="height: 70rpx; background: #ffd43f; color: #cc4a00; border-top-left-radius: 40rpx; border-bottom-left-radius: 40rpx"
-				>
+				<image src="/static/images/demo/demo6.jpg" style="height: 145rpx; width: 145rpx; border: 5rpx solid" 
+					class="rounded-circle border-light ml-4"></image>
+				<navigator url="/pages/login/login">
+					<view class="ml-2 text-white font-md">测试昵称</view>
+				</navigator>
+				<view class="d-flex a-center j-center a-self-end ml-auto px-2"
+					style="height: 70rpx; background: #ffd43f; color: #cc4a00; border-top-left-radius: 40rpx; border-bottom-left-radius: 40rpx">
 					<view class="line-h iconfont icon-huangguan mr-1"></view>
 					会员积分 1.99
 				</view>
@@ -48,10 +56,12 @@
 </template>
 
 <script>
+import loading from "@/common/mixin/loading.js";
 import card from '@/components/common/card-template.vue';
 import uniListItem from '@/components/uni-ui/uni-list-item/uni-list-item.vue';
 
 export default {
+	mixins:[loading],
 	components: {
 		card,
 		uniListItem
@@ -95,11 +105,13 @@ export default {
 	},
 	methods: {
 		navigate(path){
+			console.log(path);
 			if(!path){return;}
 			uni.navigateTo({
 				url: `/pages/${path}/${path}`
 			});
 		}
+		
 	}
 };
 </script>

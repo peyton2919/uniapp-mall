@@ -1,7 +1,7 @@
 <template>
 	<view class="d-flex border-top border-light-secondary" style="height: 100%;box-sizing: border-box;">
 		
-		<loading :show="showLoading"></loading>
+		<loading-plus v-if="beforeReady"></loading-plus>
 		
 		<scroll-view id="leftScroll" scroll-y style="flex: 1;height: 100%;" 
 		class="border-right border-light-secondary" :scroll-top="leftScrollTop">
@@ -31,7 +31,9 @@
 </template>
 
 <script>
+	import loading from "@/common/mixin/loading.js"
 	export default {
+		mixins:[loading],
 		data() {
 			return {
 				showLoading:true,

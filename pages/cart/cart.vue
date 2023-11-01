@@ -1,6 +1,9 @@
 <template>
 	<!-- 4. 购物车页面 -->
-	<view style="background: #f5f5f5">
+	<view class="page-bg-gray animated fadeIn faster">
+		
+		<loading-plus v-if="beforeReady"></loading-plus>
+		
 		<!-- 导航栏 -->
 		<uni-nav-bar :right-text="isedit ? '完成' : '编辑'" title="购物车" statusBar fixed :shadow="false" @clickRight="isedit = !isedit"></uni-nav-bar>
 
@@ -53,7 +56,7 @@
 		<!-- 占位 -->
 		<view style="height: 105rpx"></view>
 		<!-- 合计 -->
-		<view class="d-flex a-center position-fixed left-0 right-0 bottom-0 border-top border-light-secondary a-stretch bg-white" style="height: 100rpx">
+		<view class="d-flex a-center position-fixed left-0 right-0 bottom-0 border-top border-light-secondary a-stretch bg-white" style="height: 100rpx;z-index: 3;">
 			<label class="radio d-flex a-center j-center flex-shrink" style="width: 120rpx" @click="doSelectAll">
 				<radio color="#fd6801" :checked="checkedAll" :disabled="disableSelectAll" />
 			</label>
@@ -64,7 +67,11 @@
 					合计
 					<price :price="totalPrice" class="pl-1"></price>
 				</view>
-				<view class="flex-1 d-flex a-center j-center main-bg-color text-white font-md" hover-class="main-bg-hover-color" style="height: 100%">结算</view>
+				<view class="flex-1 d-flex a-center j-center main-bg-color text-white font-md"
+					hover-class="main-bg-hover-color" style="height: 100%"
+					@tap="orderConfirm">
+					结算
+				</view>
 			</template>
 			<!--  -->
 			<template v-else>
@@ -103,8 +110,7 @@
 				class="main-bg-color text-white font-md d-flex j-center a-center"
 				hover-class="main-bg-hover-color"
 				style="height: 100rpx; margin-left: -25rpx; margin-right: -25rpx"
-				@tap.stop="doHidePopup"
-			>
+				@tap.stop="doHidePopup">
 				确定
 			</view>
 		</popup-template>
@@ -112,6 +118,7 @@
 </template>
 
 <script>
+import loading from "@/common/mixin/loading.js";
 import uniNavBar from '@/components/uni-ui/uni-nav-bar/uni-nav-bar.vue';
 import price from '@/components/common/price-template.vue';
 import uniNumberBox from '@/components/uni-ui/uni-number-box/uni-number-box.vue';
@@ -122,6 +129,7 @@ import productList from "@/components/common/product-list-template.vue"
 import { mapState, mapGetters, mapActions, mapMutations } from 'vuex';
 
 export default {
+	mixins:[loading],
 	components: {
 		uniNavBar,
 		price,
@@ -194,7 +202,14 @@ export default {
 		},
 		show(key) {
 			this.popup[key] = 'show';
+		},
+		// 订单结算
+		orderConfirm(){
+			uni.navigateTo({
+				url: '/pages/order-confirm/order-confirm'
+			});
 		}
+		
 	}
 };
 </script>

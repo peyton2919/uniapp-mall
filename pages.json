@@ -288,6 +288,112 @@
 					}
 				}
         	}
+        },
+        {
+        	"path" : "pages/order-confirm/order-confirm",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "订单配送至",
+        		"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fd6801",
+				"navigationBarTextStyle": "white",
+				"app-plus": {
+					"bounce": "none"
+				}
+        	}
+        },
+        {
+        	"path" : "pages/order-invoice/order-invoice",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "发票",
+        		"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none"
+				}
+        	}
+        },
+        {
+        	"path" : "pages/login/login",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "",
+        		"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none",  // 取消回弹
+					"scrollIndicator": "none",  // 取消滚动条
+					"titleNView": false   //取消原生导航栏
+				}
+        	}
+        },
+        {
+        	"path" : "pages/msg-list/msg-list",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "消息列表",
+        		"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none"
+				}
+        	}
+        },
+        {
+        	"path" : "pages/msg-detail/msg-detail",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "消息详情",
+        		"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none"
+				}
+        	}
+        },
+        {
+        	"path" : "pages/pay-methods/pay-methods",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "支付方式",
+        		"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none"
+				}
+        	}
+        },
+        {
+        	"path" : "pages/pay-result/pay-result",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "支付成功",
+        		"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none"
+				}
+        	}
+        },
+        {
+        	"path" : "pages/order-coupon/order-coupon",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "优惠券",
+        		"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none"
+				}
+        	}
+        },
+        {
+        	"path" : "pages/order-detail/order-detail",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "",
+        		"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": {
+						"type": "transparent"
+					}					
+				}
+        	}
         }
     ],
 	"globalStyle": {

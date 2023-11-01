@@ -9,7 +9,7 @@
 
 <script>
 	/**
-	 * 没找到数据
+	 * 没找到数据 {设置时外层要设置最低高度: min-height: 440rpx;}
 	 * @property {String} icon 图片名称 默认: no_comment
 	 * 		图片类型为 png 格式,并且该图片要放在 `/static/images/nothing/` 目录下
 	 * @property {String} msg 提示信息 默认: 您还没有待付款订单
